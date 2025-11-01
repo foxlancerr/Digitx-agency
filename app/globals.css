@@ -1,26 +1,243 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Color mappings */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  
+  /* Font mappings */
+  --font-sans: var(--font-sora);
   --font-mono: var(--font-geist-mono);
+  
+  /* Sidebar colors */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  
+  /* Chart colors */
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  
+  /* Component colors */
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  
+  /* Border radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Custom gray shades from design */
+  --color-gray-6: #0F0F0F;
+  --color-gray-10: #1A1A1A;
+  --color-gray-12: #1F1F1F;
+  --color-gray-15: #282828;
+  --color-gray-20: #333333;
+  --color-gray-25: #404040;
+  --color-gray-30: #4D4D4D;
+  --color-gray-40: #666666;
+  
+  /* Custom white shades from design */
+  --color-white-50: #808080;
+  --color-white-55: #8C8C8C;
+  --color-white-60: #999999;
+  --color-white-65: #A6A6A6;
+  --color-white-70: #B3B3B3;
+  --color-white-75: #BFBFBF;
+  --color-white-80: #CCCCCC;
+  --color-white-90: #E6E6E6;
 }
 
-@media (prefers-color-scheme: dark) {
+:root {
+  --radius: 0.5rem;
+  
+  /* Light mode - keeping for reference but app is dark-focused */
+  --background: #FFFFFF;
+  --foreground: #0D0D0D;
+  --card: #FFFFFF;
+  --card-foreground: #0D0D0D;
+  --popover: #FFFFFF;
+  --popover-foreground: #0D0D0D;
+  --primary: #1A1A1A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F5F5;
+  --secondary-foreground: #1A1A1A;
+  --muted: #F5F5F5;
+  --muted-foreground: #666666;
+  --accent: #F5F5F5;
+  --accent-foreground: #1A1A1A;
+  --destructive: #EF4444;
+  --border: #E5E5E5;
+  --input: #E5E5E5;
+  --ring: #1A1A1A;
+  
+  /* Chart colors */
+  --chart-1: #3B82F6;
+  --chart-2: #10B981;
+  --chart-3: #F59E0B;
+  --chart-4: #8B5CF6;
+  --chart-5: #EC4899;
+  
+  /* Sidebar - light mode */
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0D0D0D;
+  --sidebar-primary: #1A1A1A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F5F5F5;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border: #E5E5E5;
+  --sidebar-ring: #1A1A1A;
+}
+
+.dark {
+  /* Base colors - Pure black and white from design */
+  --background: #000000;
+  --foreground: #FFFFFF;
+  
+  /* Card colors - Using gray-10 for subtle elevation */
+  --card: #1A1A1A;
+  --card-foreground: #FFFFFF;
+  
+  /* Popover colors */
+  --popover: #1A1A1A;
+  --popover-foreground: #FFFFFF;
+  
+  /* Primary colors - Using gray-12 for interactive elements */
+  --primary: #1F1F1F;
+  --primary-foreground: #FFFFFF;
+  
+  /* Secondary colors - Using gray-20 for secondary UI */
+  --secondary: #333333;
+  --secondary-foreground: #FFFFFF;
+  
+  /* Muted colors - Using gray-25 for muted backgrounds */
+  --muted: #404040;
+  --muted-foreground: #B3B3B3;
+  
+  /* Accent colors - Using gray-15 for accents */
+  --accent: #282828;
+  --accent-foreground: #FFFFFF;
+  
+  /* Destructive colors */
+  --destructive: #DC2626;
+  
+  /* Border colors - Subtle border using gray-15 */
+  --border: #282828;
+  
+  /* Input colors - Using gray-20 for inputs */
+  --input: #333333;
+  
+  /* Ring/focus colors */
+  --ring: #4D4D4D;
+  
+  /* Chart colors - vibrant colors for data visualization */
+  --chart-1: #6366F1;
+  --chart-2: #10B981;
+  --chart-3: #F59E0B;
+  --chart-4: #8B5CF6;
+  --chart-5: #EC4899;
+  
+  /* Sidebar colors */
+  --sidebar: #000000;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #1F1F1F;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #282828;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #282828;
+  --sidebar-ring: #4D4D4D;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sora), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Ensure dark mode is default */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: dark;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Custom gray utilities based on design system */
+  .bg-gray-6 { background-color: #0F0F0F; }
+  .bg-gray-10 { background-color: #1A1A1A; }
+  .bg-gray-12 { background-color: #1F1F1F; }
+  .bg-gray-15 { background-color: #282828; }
+  .bg-gray-20 { background-color: #333333; }
+  .bg-gray-25 { background-color: #404040; }
+  .bg-gray-30 { background-color: #4D4D4D; }
+  .bg-gray-40 { background-color: #666666; }
+  
+  /* Custom white/light gray utilities */
+  .bg-white-50 { background-color: #808080; }
+  .bg-white-55 { background-color: #8C8C8C; }
+  .bg-white-60 { background-color: #999999; }
+  .bg-white-65 { background-color: #A6A6A6; }
+  .bg-white-70 { background-color: #B3B3B3; }
+  .bg-white-75 { background-color: #BFBFBF; }
+  .bg-white-80 { background-color: #CCCCCC; }
+  .bg-white-90 { background-color: #E6E6E6; }
+  
+  /* Text color utilities */
+  .text-gray-6 { color: #0F0F0F; }
+  .text-gray-10 { color: #1A1A1A; }
+  .text-gray-12 { color: #1F1F1F; }
+  .text-gray-15 { color: #282828; }
+  .text-gray-20 { color: #333333; }
+  .text-gray-25 { color: #404040; }
+  .text-gray-30 { color: #4D4D4D; }
+  .text-gray-40 { color: #666666; }
+  
+  .text-white-50 { color: #808080; }
+  .text-white-55 { color: #8C8C8C; }
+  .text-white-60 { color: #999999; }
+  .text-white-65 { color: #A6A6A6; }
+  .text-white-70 { color: #B3B3B3; }
+  .text-white-75 { color: #BFBFBF; }
+  .text-white-80 { color: #CCCCCC; }
+  .text-white-90 { color: #E6E6E6; }
+  
+  /* Border utilities */
+  .border-gray-6 { border-color: #0F0F0F; }
+  .border-gray-10 { border-color: #1A1A1A; }
+  .border-gray-12 { border-color: #1F1F1F; }
+  .border-gray-15 { border-color: #282828; }
+  .border-gray-20 { border-color: #333333; }
+  .border-gray-25 { border-color: #404040; }
+  .border-gray-30 { border-color: #4D4D4D; }
+  .border-gray-40 { border-color: #666666; }
 }
