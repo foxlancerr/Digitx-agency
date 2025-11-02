@@ -1,0 +1,148 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import {
+  IoShareSocialOutline,
+  IoBulbOutline,
+  IoPhonePortraitOutline,
+  IoFlashOutline,
+  IoSearchOutline,
+  IoBusinessOutline,
+} from "react-icons/io5";
+import SectionWrapper from "../base/SectionWrapper";
+import Link from "next/link";
+import SectionTItle from "../base/SectionTItle";
+
+interface IReasonCard {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  link: string;
+  idxPosition?: number;
+}
+
+const reasonsData: IReasonCard[] = [
+  {
+    icon: <IoShareSocialOutline className="size-6" />,
+    title: "Expertise That Drives Results",
+    description:
+      "Our team of seasoned professionals brings years of experience and expertise to the table.",
+    link: "#",
+  },
+  {
+    icon: <IoBusinessOutline className="size-6" />,
+    title: "Tailored Business Solutions",
+    description:
+      "We understand that every business is unique. That's why our solutions are customized.",
+    link: "#",
+  },
+  {
+    icon: <IoBulbOutline className="size-6" />,
+    title: "Cutting-Edge Web Design",
+    description:
+      "Leave a lasting impression on your audience with our responsive web design services.",
+    link: "#",
+  },
+  {
+    icon: <IoPhonePortraitOutline className="size-6" />,
+    title: "Mobile-First Approach",
+    description:
+      "In today's mobile-centric world, we prioritize mobile design to ensure your website.",
+    link: "#",
+  },
+  {
+    icon: <IoFlashOutline className="size-6" />,
+    title: "Marketing Strategies",
+    description:
+      "Our data-driven marketing strategies allow us to reach your audience with precision.",
+    link: "#",
+  },
+  {
+    icon: <IoSearchOutline className="size-6" />,
+    title: "Search Engine Optimization",
+    description:
+      "(SEO) Mastery Boost your online visibility with our expert SEO techniques.",
+    link: "#",
+  },
+];
+
+const ReasonsSection = () => {
+  return (
+    <SectionWrapper className="bg-black">
+      <div className="max-w-6xl mx-auto">
+        <SectionTItle
+          primaryTitle={"Reasons to Choose DigitX for"}
+          secondaryTitle={"Your Digital Journey"}
+          description={
+            "Partnering with DigitX offers a multitude of advantages. Experience increased brand visibility, improved customer engagement, and higher ROI. Our tailored solutions are designed to meet your unique business needs, ensuring lasting success."
+          }
+        ></SectionTItle>
+
+        {/* First Row - Cards 0,1,2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {reasonsData.slice(0, 3).map((reason, index) => (
+            <ReasonCard key={index} {...reason} idxPosition={index} />
+          ))}
+        </div>
+
+        {/* Divider */}
+        <hr className="my-8 border-[#1A1A1A]" />
+
+        {/* Second Row - Cards 3,4,5 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {reasonsData.slice(3, 6).map((reason, index) => (
+            <ReasonCard key={index} {...reason} idxPosition={index} />
+          ))}
+        </div>
+      </div>
+    </SectionWrapper>
+  );
+};
+
+const ReasonCard = ({
+  idxPosition,
+  icon,
+  link,
+  title,
+  description,
+}: IReasonCard) => {
+  // Center card in a 3-column grid is at index 1
+  const isCenterCard = idxPosition === 1;
+
+  return (
+    <div
+      className={`p-6 transition-all duration-300 group flex flex-col items-center text-center
+        ${isCenterCard ? "lg:border-l lg:border-r border-[#282828]" : ""}
+      `}
+    >
+      {/* Icon */}
+      <div className="mb-6">
+        <div className="flex items-center justify-center rounded-full border-8 border-border h-20 w-20 bg-linear-to-br from-gray-40 to-gray-10 cursor-pointer hover:border-[#282828] transition-colors">
+          {icon}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="space-y-3">
+        <h3 className="text-lg font-semibold text-white">{title}</h3>
+        <p className="text-sm text-[#B3B3B3] leading-relaxed">{description}</p>
+      </div>
+
+      {/* Learn More Button */}
+      <Button
+        variant="outline"
+        className="mt-4 h-auto text-primary-foreground  bg-black! rounded-full w-fit border-border group/btn"
+        asChild
+      >
+        <Link href={link} className="flex items-center font-light! gap-2">
+          Learn More
+          <span className="rounded-full px-4 py-2 bg-primary">
+            <ArrowRight className="size-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+          </span>
+        </Link>
+      </Button>
+    </div>
+  );
+};
+
+export default ReasonsSection;

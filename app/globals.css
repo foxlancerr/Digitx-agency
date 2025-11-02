@@ -116,7 +116,7 @@
 
 .dark {
   /* Base colors - Pure black and white from design */
-  --background: #000000;
+  --background: #1E1E1E;
   --foreground: #FFFFFF;
   
   /* Card colors - Using gray-10 for subtle elevation */
@@ -241,3 +241,9 @@
   .border-gray-30 { border-color: #4D4D4D; }
   .border-gray-40 { border-color: #666666; }
 }
+
+
+
+/* custom styles */
+
+/* hero section */
