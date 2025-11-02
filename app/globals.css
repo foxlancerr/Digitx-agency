@@ -116,7 +116,7 @@
 
 .dark {
   /* Base colors - Pure black and white from design */
-  --background: #1E1E1E;
+  --background: #000;
   --foreground: #FFFFFF;
   
   /* Card colors - Using gray-10 for subtle elevation */

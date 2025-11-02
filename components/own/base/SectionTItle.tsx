@@ -1,5 +1,3 @@
-import React from "react";
-
 function SectionTItle({
   primaryTitle,
   secondaryTitle,
@@ -12,7 +10,7 @@ function SectionTItle({
   isNewLine?: boolean;
 }) {
   return (
-    <div className="text-center mb-12 md:mb-16">
+    <div className="text-center mb-12 md:mb-16 z-2">
       <h2 className="text-3xl md:text-4xl leading-tight font-bold mb-4">
         {primaryTitle} {isNewLine && <br />}
         <span className="text-[#666666]"> {secondaryTitle}</span>
