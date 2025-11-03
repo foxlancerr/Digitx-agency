@@ -2,13 +2,14 @@ import AchievementSection from "@/components/own/(about)/AchievementSection";
 import AwardSection from "@/components/own/(about)/ServicesSection";
 import TeamMembersSection from "@/components/own/(about)/TeamMembersSection";
 import CTASection from "@/components/own/(home)/CTASection";
-import HeroSection from "@/components/own/(project)/HeroSection";
+import HeroSection from "@/components/own/(contact)/HeroSection";
+import TouchTodaySection from "@/components/own/(contact)/TouchTodaySection";
 
-function AboutUSPage() {
+function ContactUsPage() {
   return (
     <>
       <HeroSection></HeroSection>
-      <TeamMembersSection></TeamMembersSection>
+      <TouchTodaySection></TouchTodaySection>
       <AchievementSection></AchievementSection>
       <AwardSection></AwardSection>
       <CTASection></CTASection>
@@ -16,4 +17,4 @@ function AboutUSPage() {
   );
 }
 
-export default AboutUSPage;
+export default ContactUsPage;
