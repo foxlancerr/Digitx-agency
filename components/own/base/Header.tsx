@@ -118,7 +118,7 @@ const Header = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <div className="block lg:hidden">
+      <div className="block lg:hidden z-110">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href={NavbarData.logo.url} className="flex items-center gap-2">
@@ -129,12 +129,12 @@ const Header = () => {
             />
           </Link>
           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
+            <SheetTrigger asChild className="z-120!">
+              <Button variant="outline" size="icon" className="z-120!">
                 <Menu className="size-4" />
               </Button>
             </SheetTrigger>
-            <SheetContent className="overflow-y-auto">
+            <SheetContent className="overflow-y-auto z-120!">
               <SheetHeader>
                 <SheetTitle>
                   <Link
@@ -168,7 +168,6 @@ const Header = () => {
 
 const renderMenuItem = (item: MenuItem) => {
   const pathname = usePathname();
-  console.log(pathname);
   if (item.items) {
     return (
       <NavigationMenuItem key={item.title}>
