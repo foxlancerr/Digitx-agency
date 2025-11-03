@@ -366,7 +366,7 @@ export default InquiryFormSection;
 
 const InquryPrivacy = () => {
   return (
-    <div className="flex items-center gap-6 mt-12">
+    <div className="flex items-center flex-col sm:flex-row gap-6 mt-12">
       <Card className="bg-transparent border rounded-2xl">
         <CardContent className="flex flex-col space-y-3">
           <div className="flex items-center gap-2">
