@@ -121,13 +121,13 @@ const Header = () => {
       <div className="block lg:hidden">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href={NavbarData.logo.url} className="flex items-center gap-2">
+          <Link href={NavbarData.logo.url} className="flex items-center gap-2">
             <img
               src={NavbarData.logo.src}
               className="max-h-8"
               alt={NavbarData.logo.alt}
             />
-          </a>
+          </Link>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
@@ -137,7 +137,7 @@ const Header = () => {
             <SheetContent className="overflow-y-auto">
               <SheetHeader>
                 <SheetTitle>
-                  <a
+                  <Link
                     href={NavbarData.logo.url}
                     className="flex items-center gap-2"
                   >
@@ -146,7 +146,7 @@ const Header = () => {
                       className="max-h-8"
                       alt={NavbarData.logo.alt}
                     />
-                  </a>
+                  </Link>
                 </SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-6 p-4">
@@ -190,14 +190,14 @@ const renderMenuItem = (item: MenuItem) => {
 
   return (
     <NavigationMenuItem key={item.title}>
-      <NavigationMenuLink
+      <Link
         href={item.url}
         className={`hover:bg-muted hover:text-accent-foreground group inline-flex h-10 w-max items-center justify-center rounded-full px-4 py-2 text-sm transition-colors ${
           pathname === item.url ? "bg-muted text-accent-foreground" : ""
         }`}
       >
         {item.title}
-      </NavigationMenuLink>
+      </Link>
     </NavigationMenuItem>
   );
 };
